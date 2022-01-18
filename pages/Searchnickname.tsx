@@ -45,6 +45,7 @@ const ViewSummonerMatch: NextPage = () => {
   const { contents } = useRecoilValueLoadable(getSummonerInfo);
   const { info, metadata } = contents;
   const url = "http://ddragon.leagueoflegends.com/cdn/12.1.1/img/champion";
+
   const summonerName2 = useRecoilValue(getSummonerName);
   // const champions = useRecoilValueLoadable(getChamiponsList);
   // console.log(champions);
