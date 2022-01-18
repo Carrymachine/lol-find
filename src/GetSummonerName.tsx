@@ -3,6 +3,8 @@ import { getSummonerName, getSommonerPuuid, getSummonerInfo, renderCheck } from 
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import Search from "src/image/search.png";
 
 const GetNameCTA = styled.div`
   position: absolute;
@@ -10,9 +12,7 @@ const GetNameCTA = styled.div`
   top: 0;
   right: 0;
 
-  background: #5383e8;
-
-  margin: 10px 10px 0 0;
+  margin: 15px 15px 0 0;
   height: 30px;
 `;
 
@@ -55,7 +55,9 @@ export const GetSummonerName = () => {
 
       <GetNameCTA onClick={go}>
         <Link href={{ pathname: "/Searchnickname", query: { summonerName: changeInput } }}>
-          <a>search</a>
+          <a>
+            <Image src={Search} alt="#" width={20} height={20} />
+          </a>
         </Link>
       </GetNameCTA>
     </Form>

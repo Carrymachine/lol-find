@@ -5,6 +5,7 @@ import { GetSummonerName } from "../src/GetSummonerName";
 const MainLogoText = styled.p`
   margin: 0;
   font-size: 60px;
+  font-family: "Gugi", cursive;
 `;
 
 export const Main: NextPage = () => {

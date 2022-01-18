@@ -8,30 +8,8 @@ import { MatchInfo, Perticipants } from "src/interfaces";
 import { useEffect } from "react";
 import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
-
-const TeamCardView = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-`;
-const SummonerInfoCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 300px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  margin: 0 16px;
-  align-items: center;
-  padding: 16px;
-`;
-const ChampionImage = styled.img`
-  width: 80px;
-  height: 80px;
-  border-radius: 100px;
-`;
+import { RenderCheckInfo } from "pages/api/RenderCheckInfo";
+import { TeamCardView, SummonerInfoCard, ChampionImage, SummonerNameText } from "../styles/searchNickname";
 
 const ViewSummonerMatch: NextPage = () => {
   const router = useRouter();
@@ -61,16 +39,17 @@ const ViewSummonerMatch: NextPage = () => {
     return (
       <SummonerInfoCard>
         <ChampionImage src={`${url}/${players.championName}.png`} alt="#" />
-        {players.summonerName}
-
-        <div>
-          {players.kills} / {players.deaths} / {players.assists}
-        </div>
+        <SummonerNameText>{players.summonerName}</SummonerNameText>
       </SummonerInfoCard>
     );
   });
 
-  return <TeamCardView>{renderSameTeam}</TeamCardView>;
+  return (
+    <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+      <TeamCardView>{renderSameTeam}</TeamCardView>
+      <RenderCheckInfo users={findSearchedSummonersTeam} />
+    </div>
+  );
 };
 
 export default ViewSummonerMatch;

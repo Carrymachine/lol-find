@@ -155,3 +155,7 @@ export interface MatchInfo {
     participants: [];
   };
 }
+
+export interface UserDamageInfo {
+  [key: string]: string | number;
+}
