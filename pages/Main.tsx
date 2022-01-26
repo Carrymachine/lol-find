@@ -6,6 +6,7 @@ const MainLogoText = styled.p`
   margin: 0;
   font-size: 60px;
   font-family: "Gugi", cursive;
+  color: #fff;
 `;
 
 export const Main: NextPage = () => {

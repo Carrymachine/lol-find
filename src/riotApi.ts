@@ -41,7 +41,7 @@ export const getSummonerInfo = selector({
 export const getChamiponsList = selector({
   key: "getChampions",
   get: async ({ get }) => {
-    const champions = await axios.get("https://ddragon.leagueoflegends.com/cdn/12.1.1/img/champion/Garen.png");
+    const champions = await axios.get("https://ddragon.leagueoflegends.com/cdn/12.2.1/img/champion/Garen.png");
 
     return champions;
   },

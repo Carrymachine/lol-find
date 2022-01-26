@@ -11,113 +11,23 @@ type UserProps = {
 };
 
 /// [key: string]: string | number;
-export const DealGraph = ({ data }: UserProps) => {
+const DealGraph = ({ data }: UserProps) => {
+  const defTheme = {
+    textColor: "#333333",
+    fontSize: 16,
+    grid: {
+      line: {
+        stroke: "#3C3A47",
+        strokeWidth: 1,
+      },
+    },
+  };
   console.log(data);
   const dataKeys = data.map((key: object) => {
-    return Object.keys(key);
+    return key.championName;
   });
   console.log(dataKeys);
-  return (
-    <ResponsiveBar
-      data={data}
-      keys={[dataKeys[0]]}
-      indexBy="name"
-      margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-      padding={0.3}
-      valueScale={{ type: "linear" }}
-      indexScale={{ type: "band", round: true }}
-      colors={{ scheme: "nivo" }}
-      defs={[
-        {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "#38bcb2",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "#eed312",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
-      fill={[
-        {
-          match: {
-            id: "fries",
-          },
-          id: "dots",
-        },
-        {
-          match: {
-            id: "sandwich",
-          },
-          id: "lines",
-        },
-      ]}
-      borderColor={{
-        from: "color",
-        modifiers: [["darker", 1.6]],
-      }}
-      axisTop={null}
-      axisRight={null}
-      axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: "Champion",
-        legendPosition: "middle",
-        legendOffset: 32,
-      }}
-      axisLeft={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: "Damage",
-        legendPosition: "middle",
-        legendOffset: -40,
-      }}
-      labelSkipWidth={12}
-      labelSkipHeight={12}
-      labelTextColor={{
-        from: "color",
-        modifiers: [["darker", 1.6]],
-      }}
-      legends={[
-        {
-          dataFrom: "keys",
-          anchor: "bottom-right",
-          direction: "column",
-          justify: false,
-          translateX: 120,
-          translateY: 0,
-          itemsSpacing: 2,
-          itemWidth: 100,
-          itemHeight: 20,
-          itemDirection: "left-to-right",
-          itemOpacity: 0.85,
-          symbolSize: 20,
-          effects: [
-            {
-              on: "hover",
-              style: {
-                itemOpacity: 1,
-              },
-            },
-          ],
-        },
-      ]}
-      role="application"
-      ariaLabel="Nivo bar chart demo"
-      barAriaLabel={function (e) {
-        return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
-      }}
-    />
-  );
+  return <ResponsiveBar data={data} keys={dataKeys} indexBy="championName" margin={{ top: 0, right: -90, bottom: 0, left: -80 }} padding={0.5} valueScale={{ type: "linear" }} colors={{ scheme: "greys" }} theme={defTheme} />;
 };
+
+export default DealGraph;

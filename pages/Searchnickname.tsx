@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValueLoadable, useRecoilValue } from "recoil";
 import { getSummonerInfo, getSummonerName, getChamiponsList } from "src/riotApi";
 import { useRouter } from "next/router";
 import { MatchInfo, Perticipants } from "src/interfaces";
+import { GetSummonerName } from "src/GetSummonerName";
 
 import { useEffect } from "react";
 import Image from "next/image";
@@ -45,10 +46,15 @@ const ViewSummonerMatch: NextPage = () => {
   });
 
   return (
-    <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-      <TeamCardView>{renderSameTeam}</TeamCardView>
-      <RenderCheckInfo users={findSearchedSummonersTeam} />
-    </div>
+    <>
+      <header style={{ position: "fixed" }}>
+        <GetSummonerName />
+      </header>
+      <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+        <TeamCardView>{renderSameTeam}</TeamCardView>
+        <RenderCheckInfo users={findSearchedSummonersTeam} />
+      </div>
+    </>
   );
 };
 
